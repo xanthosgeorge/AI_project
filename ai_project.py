@@ -1,3 +1,4 @@
+from operator import xor
 from os import remove
 from random import random
 import random
@@ -8,7 +9,7 @@ list = ["A","B","C","D","E"]
 random.shuffle(list)
 parent1 = random.sample(list,5)
 parent2 = random.sample(list,5)
-
+print(parent1,parent2)
 
 graph = {"A":{"B":4,"C":4,"D":7,"E":3},
            "B":{"C":2,"D":3,"E":5,"A":4},
@@ -16,36 +17,24 @@ graph = {"A":{"B":4,"C":4,"D":7,"E":3},
            "D":{"B":3,"C":2,"A":7,"E":6},
            "E":{"A":3,"B":5,"C":3,"D":6}
         }
-print(graph['A']['B'])
 
-#print(parent1,parent2,parent3,parent4)
-
+offsping1 = []
+offsping2 = []
 def CrossOver(parent1,parent2):
     part1 = parent1[3:]
     part2 = parent2[3:]
-    parent1 = parent1[:3] + part2
-    parent2 = parent2[:3]+ part1
-    #print(part1,part2)
-    print(parent1,parent2)
+    print(part1,part2)
+    for x in parent1[:3]:
+        offsping1.append(x)
+    for x in part2:
+        offsping1.append(x)
+    for x in parent2[:3]:
+        offsping2.append(x)
+    for x in part1:
+        offsping2.append(x)
+    
 
 
-#listOfReplace.remove("A")
-#print(listOfReplace)
-listOfReplace = list
-def Mutation(parent1):
-    listOfReplace = list
-    for x in parent1:
-        if (x in listOfReplace):
-            listOfReplace.remove(x)
-        else:
-            continue
-    listOfReplace = list
-    for x in parent2:
-        if (x in listOfReplace):
-            listOfReplace.remove(x)
-    print(parent1,parent2)
-    print(listOfReplace)
-           
-           
 CrossOver(parent1,parent2)
-Mutation(parent1)
+print (parent1,parent2)
+print(offsping1,offsping2)
