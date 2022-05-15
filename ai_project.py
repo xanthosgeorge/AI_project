@@ -7,7 +7,7 @@ list = ["A","B","C","D","E"]
 random.shuffle(list)
 parent1 = random.sample(list,5)
 parent2 = random.sample(list,5)
-print(parent1,parent2)
+#print(parent1,parent2)
 
 graph = {"A":{"B":4,"C":4,"D":7,"E":3},
            "B":{"C":2,"D":3,"E":5,"A":4},
@@ -19,20 +19,36 @@ graph = {"A":{"B":4,"C":4,"D":7,"E":3},
 offsping1 = []
 offsping2 = []
 def CrossOver(parent1,parent2):
-    part1 = parent1[3:]
-    part2 = parent2[3:]
-    print(part1,part2)
-    for x in parent1[:3]:
+    part1 = parent1[4:]
+    part2 = parent2[4:]
+    #print(part1,part2)
+    for x in parent1[:4]:
         offsping1.append(x)
     for x in part2:
         offsping1.append(x)
-    for x in parent2[:3]:
+    for x in parent2[:4]:
         offsping2.append(x)
     for x in part1:
-        offsping2.append(x)
+        offsping2.append(x)  # the last two elements of each parent are being changed
+
+
+def Mutation(offsping1):
+    listOfReplacements = list
+    for x in offsping1[:4]:
+        listOfReplacements.remove(x)
+    print(offsping1)
+    print(listOfReplacements)
+    offsping1.pop(-1)
+    offsping1.append(listOfReplacements[0])
+    print(offsping1)
+            
+    
+
+        
     
 
 
 CrossOver(parent1,parent2)
-print (parent1,parent2)
-print(offsping1,offsping2)
+Mutation(offsping1)
+""" print (parent1,parent2)
+print(offsping1,offsping2) """
