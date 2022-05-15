@@ -1,5 +1,3 @@
-from operator import xor
-from os import remove
 from random import random
 import random
 from re import X
