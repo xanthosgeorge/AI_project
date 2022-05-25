@@ -3,6 +3,7 @@ import random
 from re import X
 
 from typing import List
+##
 list = ["A","B","C","D","E"]
 random.shuffle(list)
 parent1 = random.sample(list,5)
@@ -19,14 +20,13 @@ graph = {"A":{"B":4,"C":4,"D":7,"E":3},
 offsping1 = []
 offsping2 = []
 def CrossOver(parent1,parent2):
-    part1 = parent1[4:]
-    part2 = parent2[4:]
-    #print(part1,part2)
-    for x in parent1[:4]:
+    part1 = parent1[3:]
+    part2 = parent2[3:]
+    for x in parent1[:3]:
         offsping1.append(x)
     for x in part2:
         offsping1.append(x)
-    for x in parent2[:4]:
+    for x in parent2[:3]:
         offsping2.append(x)
     for x in part1:
         offsping2.append(x)  # the last two elements of each parent are being changed
@@ -49,6 +49,5 @@ def Mutation(offsping1):
 
 
 CrossOver(parent1,parent2)
-Mutation(offsping1)
-""" print (parent1,parent2)
-print(offsping1,offsping2) """
+print(offsping1,offsping2)
+#Mutation(offsping1)
